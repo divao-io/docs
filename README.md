@@ -1,10 +1,10 @@
 # Divao Single Sign-On (Divao SSO)
 
-Divao Passwordless Sign-On allows you to sign-in and sign-up users without any passwords.
+Divao Passwordless Sign-On allows you to sign-up and sign-in users without any passwords.
 
 ## How Does it work?
 
-Divao SSO help service providers to verify the user's digital identity (e.g. email address, phone number).
+Divao Passworldess helps service providers verify their user's digital identity (e.g. email address, phone number).
 
 1. User provides the digital identity (e.g. `john@example.org`)
 1. Divao sends a message with a secret link (e.g. `https://divao.io/x2IOrGDkLNVZsDYptNXaAg`)
@@ -13,9 +13,9 @@ Divao SSO help service providers to verify the user's digital identity (e.g. ema
 
 ## Getting started
 
-### Implementing Divao SSO to your web app
+### How to add Divao Passwordless to your web app
 
-There are three main steps to implement Divao SSO into your web app.
+With these four simple steps you can add Divao Passwordless to your web app.
 
 #### 1. Include JavaScript
 
