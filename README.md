@@ -1,4 +1,4 @@
-# Divao Single Sign-On (Divao SSO)
+# Divao Passwordless
 
 Divao Passwordless Sign-On allows you to sign-up and sign-in users without any passwords.
 
