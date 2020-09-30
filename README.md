@@ -25,9 +25,9 @@ Inlcude the Divao library by adding the following line of code to your website:
 <script async src="https://api.divao.io/v1/divao.js"></script>
 ```
 
-#### 2. Show sign-in dialog
+#### 2. Show sign dialog
 
-Show the Divao sign-in dialog:
+Show the Divao sign dialog:
 
 ```html
 <button onclick="Divao.sign(onSign)">Sign without password</button>
@@ -35,7 +35,7 @@ Show the Divao sign-in dialog:
 
 #### 3. React to the sign-in
 
-Retrieve the login token verified by Divao:
+Retrieve the token:
 
 ```js
 function onSign(jwt)
@@ -48,7 +48,7 @@ function onSign(jwt)
 
 #### 4. Verify session
 
-Verify the session on your backend:
+Verify the token on your backend:
 
 ```js
 import {JWT} from "jose";
