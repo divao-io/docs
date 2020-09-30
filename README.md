@@ -9,7 +9,7 @@ Divao Passworldess helps service providers verify their user's digital identity 
 1. User provides the digital identity (e.g. `john@example.org`)
 1. Divao sends a message with a secret link (e.g. `https://divao.io/x2IOrGDkLNVZsDYptNXaAg`)
 1. User clicks on the secret link, thereby proving that they own that digital identity
-1. Divao issues an standardized [JSON Web Token (JWT)](https://en.wikipedia.org/wiki/JSON_Web_Token) that can be verified on your backend 
+1. Divao issues a standardized [JSON Web Token (JWT)](https://en.wikipedia.org/wiki/JSON_Web_Token) that can be verified on the backend 
 
 ## Getting started
 
