@@ -21,6 +21,7 @@ import java.text.ParseException;
  * This class is thread safe.
  * 
  * @author Public Domain
+ * @param <C> the security context type.
  */
 public class BasicJWTProcessor<C extends SecurityContext> implements JWTProcessor<C>
 {
@@ -32,7 +33,7 @@ public class BasicJWTProcessor<C extends SecurityContext> implements JWTProcesso
     /**
      * JWT claims verifier.
      */
-    private final JWTClaimsSetVerifier<?> jtwClaimsSetVerifier;
+    private final JWTClaimsSetVerifier<C> jtwClaimsSetVerifier;
 
     /**
      * Creates a new instance of this class.
@@ -40,7 +41,7 @@ public class BasicJWTProcessor<C extends SecurityContext> implements JWTProcesso
      * @param jwsVerifier the JWS verifier.
      * @param jtwClaimsSetVerifier the JWT claims verifier.
      */
-    public BasicJWTProcessor(final JWSVerifier jwsVerifier, final JWTClaimsSetVerifier<?> jtwClaimsSetVerifier)
+    public BasicJWTProcessor(final JWSVerifier jwsVerifier, final JWTClaimsSetVerifier<C> jtwClaimsSetVerifier)
     {
         this.jwsVerifier = jwsVerifier;
         this.jtwClaimsSetVerifier = jtwClaimsSetVerifier;
@@ -80,7 +81,7 @@ public class BasicJWTProcessor<C extends SecurityContext> implements JWTProcesso
             try
             {
                 final JWTClaimsSet claimsSet = signedJWT.getJWTClaimsSet();
-                jtwClaimsSetVerifier.verify(claimsSet, null);
+                jtwClaimsSetVerifier.verify(claimsSet, context);
                 return claimsSet;
             }
             catch(final ParseException e)
