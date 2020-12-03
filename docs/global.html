@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Divao Passwordless: Global</title>
+    
+      <link type="text/css" rel="stylesheet" href="styles/vendor/prism-tomorrow-night.css">
+    
+    <link type="text/css" rel="stylesheet" href="styles/styles.css">
+    
+</head>
+<body>
+
+<header class="layout-header">
+  
+  <h1>
+    <a href="./index.html">
+      Divao Passwordless
+    </a>
+  </h1>
+  <nav class="layout-nav">
+    <ul><li class="nav-heading">Classes</li><li class="nav-heading"><span class="nav-item-type type-class" title="class">C</span><span class="nav-item-name is-class"><a href="Divao.html">Divao</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="Divao.html#close">close</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="Divao.html#sign">sign</a></span></li><li class="nav-item"><span class="nav-item-type type-function" title="function">F</span><span class="nav-item-name is-function"><a href="Divao.html#verify">verify</a></span></li></ul><li class="nav-heading"><a href="global.html">Globals</a></li><li class="nav-item"><span class="nav-item-type type-typedef" title="typedef">T</span><span class="nav-item-name is-typedef"><a href="global.html#JsonWebTokenPayload">JsonWebTokenPayload</a></span></li>
+  </nav>
+</header>
+
+
+<main class="layout-main ">
+  <div class="container">
+    <p class="page-kind"></p>
+    <h1 class="page-title">Global</h1>
+    
+
+
+
+
+<section>
+
+
+<header class="not-class">
+
+
+    
+        
+        <!-- <h2></h2> -->
+
+        
+
+        
+
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+
+
+
+    
+        
+
+        
+
+
+<div class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</div>
+
+
+        
+    
+    </div>
+
+    
+
+    
+
+     
+
+    
+
+    
+
+
+    
+
+    
+
+    
+        <h3 class="subsection-title">Type Definitions</h3>
+
+        
+                
+
+<article class="member">
+    <div class="method-type">
+        
+    </div>
+<h4 class="member-name" id="JsonWebTokenPayload">JsonWebTokenPayload</h4>
+
+
+
+
+
+
+    <h4>Type</h4>
+    <ul>
+        <li>
+            
+
+
+    <span class="param-type">
+        <code>Object</code>
+    </span>
+    
+
+        </li>
+    </ul>
+
+
+
+
+
+    <h4 class="method-heading">Properties</h4>
+    
+
+<ul class="method-params">
+
+
+    <li>
+        
+            <span class="param-name">aud</span>
+        
+
+        
+            
+
+
+    <span class="param-type">
+        <code>String</code>
+    </span>
+    
+
+        
+
+        
+
+        
+
+        <div class="param-description">
+            <p>the token audience, e.g. <code>acme.example.org</code>.</p>
+        </div>
+
+    </li>
+    
+
+    <li>
+        
+            <span class="param-name">exp</span>
+        
+
+        
+            
+
+
+    <span class="param-type">
+        <code>Number</code>
+    </span>
+    
+
+        
+
+        
+
+        
+
+        <div class="param-description">
+            <p>the time at which the token expires, in seconds since Unix epoch.</p>
+        </div>
+
+    </li>
+    
+
+    <li>
+        
+            <span class="param-name">nbf</span>
+        
+
+        
+            
+
+
+    <span class="param-type">
+        <code>Number</code>
+    </span>
+    
+
+        
+
+        
+
+        
+
+        <div class="param-description">
+            <p>the time at which the token becomes valid, in seconds since Unix epoch.</p>
+        </div>
+
+    </li>
+    
+
+    <li>
+        
+            <span class="param-name">sub</span>
+        
+
+        
+            
+
+
+    <span class="param-type">
+        <code>String</code>
+    </span>
+    
+
+        
+
+        
+
+        
+
+        <div class="param-description">
+            <p>the authenticated subject, e.g. <code>alice@example.org</code>.</p>
+        </div>
+
+    </li>
+    
+</ul>
+
+
+
+
+<div class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+        <h4 class="method-heading">See</h4>
+        <ul>
+            
+                <li><a href="https://tools.ietf.org/html/rfc7519#section-4.1">https://tools.ietf.org/html/rfc7519#section-4.1</a></li>
+            
+        </ul>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+
+</article>
+            
+    
+
+    
+        <h3 class="subtitle">Events</h3>
+
+        
+            
+
+<article class="event">
+	<div class="event-type">
+		
+	</div>
+
+	<h4 class="event-name" id="event:Window:DivaoApiLoaded">
+		Window: DivaoApiLoaded
+	</h4>
+
+	
+	<div class="event-description">
+			<p>DivaoApiLoaded event fires when the Divao API is ready and attached to the
+window object.</p>
+	</div>
+	
+
+	
+		<h4 class="method-heading">Type</h4>
+		<ul>
+			<li>
+				
+
+
+    <span class="param-type">
+        <code>DivaoApiLoaded</code>
+    </span>
+    
+
+			</li>
+		</ul>
+	
+
+	
+
+	
+
+
+<div class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</div>
+
+
+	
+		<h4 class="method-heading">Example</h4>
+		
+    <pre><code class="language-js">window.addEventListener("DivaoApiLoaded", () => console.log("window.Divao can now be used"));</code></pre>
+
+	
+
+	
+
+	
+
+	
+
+	
+
+</article>
+
+        
+    
+</article>
+
+</section>
+
+
+
+
+  </div>
+</main>
+
+<footer class="layout-footer">
+  <div class="container">
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.6</a>
+  </div>
+</footer>
+
+
+
+<script src="scripts/prism.dev.js"></script>
+</body>
+</html>

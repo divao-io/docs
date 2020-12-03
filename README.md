@@ -22,7 +22,7 @@ With these four simple steps you can add Divao Passwordless to your web app.
 Inlcude the Divao library by adding the following line of code to your website:
 
 ```html
-<script async src="https://api.divao.io/v1/divao.js"></script>
+<script async data-api-key="YOUR_DIVAO_API_KEY" data-on-sign="onSign" src="https://api.divao.io/v1/divao.js"></script>
 ```
 
 #### 2. Show sign dialog
@@ -30,7 +30,7 @@ Inlcude the Divao library by adding the following line of code to your website:
 Show the Divao sign dialog:
 
 ```html
-<button onclick="Divao.sign(onSign)">Sign without password</button>
+<button onclick="Divao.sign()">Sign without password</button>
 ```
 
 #### 3. React to the sign-in
@@ -40,9 +40,9 @@ Retrieve the token:
 ```js
 function onSign(jwt)
 {
-    const payload = Divao.readJWT(jwt);
-    console.log(payload.sub); //e.g. john@example.org
-    //save JWT, redirect or send to backend
+    const payload = Divao.verify(jwt);
+    console.log(payload.sub); //e.g. alice@example.org
+    //save JWT, redirect or use to call backend API
 }
 ```
 
@@ -53,14 +53,10 @@ Verify the token on your backend:
 ```js
 import {JWT} from "jose";
 
-const payload = JWT.verify(jwt, DIVAO_PUBLIC_KEY, {aud: "acme-ltd.com"});
+const payload = JWT.verify(jwt, DIVAO_PUBLIC_KEY, {aud: "acme.example.com"});
 if(payload !== null)
 {
     //user is logged in
     console.log(payload.sub); //e.g. john@example.org
 }
 ```
-
-## Reference
-
-[TBD]
