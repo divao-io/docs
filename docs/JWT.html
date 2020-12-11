@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Divao Passwordless: </title>
+    <title>Divao Passwordless: JWT</title>
     
       <link type="text/css" rel="stylesheet" href="styles/vendor/prism-tomorrow-night.css">
     
@@ -26,70 +26,375 @@
 
 <main class="layout-main ">
   <div class="container">
-    <p class="page-kind"></p>
-    <h1 class="page-title"></h1>
+    <p class="page-kind">Class</p>
+    <h1 class="page-title">JWT</h1>
     
 
 
 
+
+<section>
+
+
+<header class="class">
+
+
+    
+        
+        <!-- <h2>JWT</h2> -->
+
+        
+
+        
+
+        
+            
+            <div class="class-description"><p>Represents a JSON Web Token.</p></div>
+        
+    
+</header>
+
+<article>
+    <div class="container-overview">
+
+
+
+    
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    </div>
+
+    
+
+    
+        <h3 class="subsection-title">Classes</h3>
+
+        <dl>
+            <dt><a href="JWT.html">JWT</a></dt>
+            <dd></dd>
+        </dl>
+    
+
+     
+
+    
+
     
 
 
+    
+        <h3 class="subtitle">Members</h3>
+
+        
+            
+
+<article class="member">
+    <div class="method-type">
+        
+    </div>
+<h4 class="member-name" id="header">header<span class="type-signature">JsonWebTokenHeader</span></h4>
 
 
-    <section class="readme">
-        <article><h1>Divao Passwordless</h1>
-<p>Divao Passwordless Sign-On allows you to sign-up and sign-in users without any passwords.</p>
-<h2>How Does it work?</h2>
-<p>Divao Passworldess helps service providers verify their user's digital identity (e.g. email address, phone number).</p>
-<ol>
-<li>User provides the digital identity (e.g. <code>john@example.org</code>)</li>
-<li>Divao sends a message with a secret link (e.g. <code>https://divao.io/x2IOrGDkLNVZsDYptNXaAg</code>)</li>
-<li>User clicks on the secret link, thereby proving that they own that digital identity</li>
-<li>Divao issues a standardized <a href="https://en.wikipedia.org/wiki/JSON_Web_Token">JSON Web Token (JWT)</a> that can be verified on the backend</li>
-</ol>
-<h2>Getting started</h2>
-<h3>How to add Divao Passwordless to your web app</h3>
-<p>With these four simple steps you can add Divao Passwordless to your web app.</p>
-<h4>1. Include JavaScript</h4>
-<p>Inlcude the Divao library by adding the following line of code to your website:</p>
-<pre class="prettyprint source lang-html"><code>&lt;script async data-api-key=&quot;YOUR_DIVAO_API_KEY&quot; data-on-sign=&quot;onSign&quot; src=&quot;https://api.divao.io/v1/auth.js&quot;>&lt;/script>
-</code></pre>
-<h4>2. Show sign dialog</h4>
-<p>Show the Divao sign dialog:</p>
-<pre class="prettyprint source lang-html"><code>&lt;button onclick=&quot;Divao.sign()&quot;>Sign without password&lt;/button>
-</code></pre>
-<h4>3. React to the sign-in</h4>
-<p>Retrieve the token:</p>
-<pre class="prettyprint source lang-js"><code>function onSign()
-{
-    if(Divao.JWT !== null)
-    {
-        console.log(Divao.JWT.payload.sub); //e.g. alice@example.org
-        console.log(Divao.JWT.toString()) //e.g. eyJhbGciO...
-        const header = `Bearer ${Divao.JWT}`;    
-        //use to call backend API
-    }
-    else
-    {
-        console.log(&quot;not signed in&quot;);
-    }
-}
-</code></pre>
-<h4>4. Verify token</h4>
-<p>Verify the token on your backend:</p>
-<pre class="prettyprint source lang-js"><code>import {JWT} from &quot;jose&quot;;
-
-const payload = JWT.verify(jwt, DIVAO_PUBLIC_KEY, {aud: &quot;acme.example.com&quot;});
-if(payload !== null)
-{
-    //user is logged in
-    console.log(payload.sub); //e.g. john@example.org
-}
-</code></pre></article>
-    </section>
 
 
+<div class="description">
+    <p>Gets the JSON Web Token header.</p>
+</div>
+
+
+
+    <h4>Type</h4>
+    <ul>
+        <li>
+            
+
+
+    <span class="param-type">
+        <code>JsonWebTokenHeader</code>
+    </span>
+    
+
+        </li>
+    </ul>
+
+
+
+
+
+<div class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</div>
+
+
+
+
+
+
+
+
+</article>
+        
+            
+
+<article class="member">
+    <div class="method-type">
+        
+    </div>
+<h4 class="member-name" id="payload">payload<span class="type-signature"><a href="global.html#JsonWebTokenPayload">JsonWebTokenPayload</a></span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets the JSON Web Token payload.</p>
+</div>
+
+
+
+    <h4>Type</h4>
+    <ul>
+        <li>
+            
+
+
+    <span class="param-type">
+        <code><a href="global.html#JsonWebTokenPayload">JsonWebTokenPayload</a></code>
+    </span>
+    
+
+        </li>
+    </ul>
+
+
+
+
+
+<div class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</div>
+
+
+
+
+
+
+
+
+</article>
+        
+            
+
+<article class="member">
+    <div class="method-type">
+        
+    </div>
+<h4 class="member-name" id="signature">signature<span class="type-signature">Uint8Array</span></h4>
+
+
+
+
+<div class="description">
+    <p>Gets the JSON Web Token payload.</p>
+</div>
+
+
+
+    <h4>Type</h4>
+    <ul>
+        <li>
+            
+
+
+    <span class="param-type">
+        <code>Uint8Array</code>
+    </span>
+    
+
+        </li>
+    </ul>
+
+
+
+
+
+<div class="details">
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+</div>
+
+
+
+
+
+
+
+
+</article>
+        
+    
+
+    
+
+    
+
+    
+</article>
+
+</section>
 
 
 

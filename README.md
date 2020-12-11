@@ -22,7 +22,7 @@ With these four simple steps you can add Divao Passwordless to your web app.
 Inlcude the Divao library by adding the following line of code to your website:
 
 ```html
-<script async data-api-key="YOUR_DIVAO_API_KEY" data-on-sign="onSign" src="https://api.divao.io/v1/divao.js"></script>
+<script async data-api-key="YOUR_DIVAO_API_KEY" data-on-sign="onSign" src="https://api.divao.io/v1/auth.js"></script>
 ```
 
 #### 2. Show sign dialog
@@ -38,15 +38,23 @@ Show the Divao sign dialog:
 Retrieve the token:
 
 ```js
-function onSign(jwt)
+function onSign()
 {
-    const payload = Divao.verify(jwt);
-    console.log(payload.sub); //e.g. alice@example.org
-    //save JWT, redirect or use to call backend API
+    if(Divao.JWT !== null)
+    {
+        console.log(Divao.JWT.payload.sub); //e.g. alice@example.org
+        console.log(Divao.JWT.toString()) //e.g. eyJhbGciO...
+        const header = `Bearer ${Divao.JWT}`;    
+        //use to call backend API
+    }
+    else
+    {
+        console.log("not signed in");
+    }
 }
 ```
 
-#### 4. Verify session
+#### 4. Verify token
 
 Verify the token on your backend:
 
