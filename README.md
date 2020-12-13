@@ -22,7 +22,7 @@ With these four simple steps you can add Divao Passwordless to your web app.
 Inlcude the Divao library by adding the following line of code to your website:
 
 ```html
-<script async data-api-key="YOUR_DIVAO_API_KEY" data-on-sign="onSign" src="https://api.divao.io/v1/"></script>
+<script async data-api-key="YOUR_DIVAO_API_KEY" src="https://api.divao.io/v1/"></script>
 ```
 
 #### 2. Show sign dialog
@@ -38,7 +38,7 @@ Show the Divao sign dialog:
 Retrieve the token:
 
 ```js
-function onSign()
+window.addEventListener("DivaoSignOn", () =>
 {
     if(Divao.JWT !== null)
     {
