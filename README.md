@@ -51,7 +51,7 @@ window.addEventListener("DivaoSignOn", () =>
     {
         console.log("not signed in");
     }
-}
+});
 ```
 
 #### 4. Verify token
