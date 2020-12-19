@@ -76,6 +76,40 @@
     }
 });
 </code></pre>
+
+<p>Here it is a working example:<pre class="prettyprint source lang-html"><code>&lt;!DOCTYPE html>
+  &lt;html>
+  
+  &lt;head>
+      &lt;meta charset=&quot;UTF-8&quot;>
+      &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+      &lt;title>Passwordless sign-on Sample&lt;/title>
+      &lt;link crossorigin=&quot;anonymous&quot;
+          integrity=&quot;sha512-MoRNloxbStBcD8z3M/2BmnT+rg4IsMxPkXaGh2zD6LGNNFE80W3onsAhRcMAMrSoyWL9xD7Ert0men7vR8LUZg==&quot;
+          rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css&quot; />
+  &lt;/head>
+  
+  &lt;body>
+      &lt;script async data-api-key=&quot;YOUR_DIVAO_API_KEY&quot; src=&quot;https://api.divao.io/v1/&quot;>&lt;/script>
+      &lt;div class=&quot;container-fluid&quot;>
+          &lt;div>
+              &lt;span>&lt;/span>
+          &lt;/div>
+          &lt;div>
+              &lt;button class=&quot;btn btn-primary&quot; onclick=&quot;Divao.sign()&quot; style=&quot;display: none;&quot;>Sign on&lt;/button>
+              &lt;button class=&quot;btn btn-danger&quot; style=&quot;&quot; onclick=&quot;Divao.signout()&quot;>Sign out&lt;/button>
+          &lt;/div>
+      &lt;/div>
+      &lt;script>
+          window.addEventListener(&quot;DivaoSignOn&quot;, () => {
+              document.querySelector(&quot;span&quot;).textContent = Divao.JWT === null ? &quot;&quot; : `Welcome ${Divao.JWT.payload.sub}`;
+              document.querySelector(&quot;button[class ~= btn-primary]&quot;).style.display = Divao.JWT === null ? &quot;&quot; : &quot;none&quot;;
+              document.querySelector(&quot;button[class ~= btn-danger]&quot;).style.display = Divao.JWT === null ? &quot;none&quot; : &quot;&quot;;
+          });
+      &lt;/script>
+  &lt;/body>
+  
+  &lt;/html></code></pre></p>
 <h4>4. Verify token</h4>
 <p>Verify the token on your backend:</p>
 <pre class="prettyprint source lang-js"><code>import {JWT} from &quot;jose&quot;;
