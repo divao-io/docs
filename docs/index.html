@@ -40,14 +40,23 @@
     <section class="readme">
         <article><h1>Divao Passwordless</h1>
 <p>Divao Passwordless Sign-On allows you to sign-up and sign-in users without any passwords.</p>
+<p>Divao verifies the email or phone number provided, and returns with a <a href="https://en.wikipedia.org/wiki/JSON_Web_Token">JSON Web Token (JWT)</a> signed by Divao used to authenticates a user.</p>
 <h2>How Does it work?</h2>
-<p>Divao Passworldess helps service providers verify their user's digital identity (e.g. email address, phone number).</p>
+<p>Divao Passworldess verifies a user's digital identity (e.g. email address, phone number).</p>
 <ol>
-<li>User provides the digital identity (e.g. <code>john@example.org</code>)</li>
+<li>User enters the digital identity (e.g. <code>john@example.org</code>)</li>
 <li>Divao sends a message with a secret link (e.g. <code>https://divao.io/x2IOrGDkLNVZsDYptNXaAg</code>)</li>
 <li>User clicks on the secret link, thereby proving that they own that digital identity</li>
-<li>Divao issues a standardized <a href="https://en.wikipedia.org/wiki/JSON_Web_Token">JSON Web Token (JWT)</a> that can be verified on the backend</li>
+<li>Divao issues a standardized <a href="https://en.wikipedia.org/wiki/JSON_Web_Token">JSON Web Token (JWT)</a></li>
 </ol>
+<pre class="prettyprint source lang-mermaid"><code>sequenceDiagram
+    Client->>+Divao: User enters email
+    Divao-->>-Client: Divao sends a message with a secret link
+    Client->>+Divao: User clicks on the secret link
+    Divao-->>-Client: Divao issues a standardized JWT
+    Client->>+Backend: Backend verifies the JWT to authenticate the user
+    Backend-->>-Client: Backend verify the JWT and response
+</code></pre>
 <h2>Getting started</h2>
 <h3>How to add Divao Passwordless to your web app</h3>
 <p>With these four simple steps you can add Divao Passwordless to your web app.</p>
@@ -76,40 +85,37 @@
     }
 });
 </code></pre>
-
-<p>Here it is a working example:<pre class="prettyprint source lang-html"><code>&lt;!DOCTYPE html>
-  &lt;html>
-  
-  &lt;head>
-      &lt;meta charset=&quot;UTF-8&quot;>
-      &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
-      &lt;title>Passwordless sign-on Sample&lt;/title>
-      &lt;link crossorigin=&quot;anonymous&quot;
-          integrity=&quot;sha512-MoRNloxbStBcD8z3M/2BmnT+rg4IsMxPkXaGh2zD6LGNNFE80W3onsAhRcMAMrSoyWL9xD7Ert0men7vR8LUZg==&quot;
-          rel=&quot;stylesheet&quot; href=&quot;https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css&quot; />
-  &lt;/head>
-  
-  &lt;body>
-      &lt;script async data-api-key=&quot;YOUR_DIVAO_API_KEY&quot; src=&quot;https://api.divao.io/v1/&quot;>&lt;/script>
-      &lt;div class=&quot;container-fluid&quot;>
-          &lt;div>
-              &lt;span>&lt;/span>
-          &lt;/div>
-          &lt;div>
-              &lt;button class=&quot;btn btn-primary&quot; onclick=&quot;Divao.sign()&quot; style=&quot;display: none;&quot;>Sign on&lt;/button>
-              &lt;button class=&quot;btn btn-danger&quot; style=&quot;&quot; onclick=&quot;Divao.signout()&quot;>Sign out&lt;/button>
-          &lt;/div>
-      &lt;/div>
-      &lt;script>
-          window.addEventListener(&quot;DivaoSignOn&quot;, () => {
-              document.querySelector(&quot;span&quot;).textContent = Divao.JWT === null ? &quot;&quot; : `Welcome ${Divao.JWT.payload.sub}`;
-              document.querySelector(&quot;button[class ~= btn-primary]&quot;).style.display = Divao.JWT === null ? &quot;&quot; : &quot;none&quot;;
-              document.querySelector(&quot;button[class ~= btn-danger]&quot;).style.display = Divao.JWT === null ? &quot;none&quot; : &quot;&quot;;
-          });
-      &lt;/script>
-  &lt;/body>
-  
-  &lt;/html></code></pre></p>
+<p>Here it is a working example:</p>
+<pre class="prettyprint source lang-html"><code>&lt;!DOCTYPE html>
+&lt;html>
+&lt;head>
+    &lt;meta charset=&quot;UTF-8&quot;>
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+    &lt;title>Passwordless sign-on Sample&lt;/title>
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css&quot;
+        integrity=&quot;sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2&quot; crossorigin=&quot;anonymous&quot;>
+&lt;/head>
+&lt;body>
+    &lt;script async data-api-key=&quot;xHm3vEuUVITNWRTsbZpn8l&quot; src=&quot;https://api.divao.io/v1/&quot;>&lt;/script>
+    &lt;div class=&quot;container-fluid&quot;>
+        &lt;div>
+            &lt;span>&lt;/span>
+        &lt;/div>
+        &lt;div>
+            &lt;button class=&quot;btn btn-primary&quot; onclick=&quot;Divao.sign()&quot; style=&quot;display: none;&quot;>Sign on&lt;/button>
+            &lt;button class=&quot;btn btn-danger&quot; style=&quot;&quot; onclick=&quot;Divao.signout()&quot;>Sign out&lt;/button>
+        &lt;/div>
+    &lt;/div>
+    &lt;script>
+        window.addEventListener(&quot;DivaoSignOn&quot;, () => {
+            document.querySelector(&quot;span&quot;).textContent = Divao.JWT === null ? &quot;You have not sign up yet.&quot; : `Welcome ${Divao.JWT.payload.sub}`;
+            document.querySelector(&quot;button[class ~= btn-primary]&quot;).style.display = Divao.JWT === null ? &quot;&quot; : &quot;none&quot;;
+            document.querySelector(&quot;button[class ~= btn-danger]&quot;).style.display = Divao.JWT === null ? &quot;none&quot; : &quot;&quot;;
+        });
+    &lt;/script>
+&lt;/body>
+&lt;/html>
+</code></pre>
 <h4>4. Verify token</h4>
 <p>Verify the token on your backend:</p>
 <pre class="prettyprint source lang-js"><code>import {JWT} from &quot;jose&quot;;
@@ -119,6 +125,23 @@ if(payload !== null)
 {
     //user is logged in
     console.log(payload.sub); //e.g. john@example.org
+}
+</code></pre>
+<h2>Configurations</h2>
+<h3>Register to Divao</h3>
+<p>To use Divao Passwordless Sign-on, you need to register on  <a href="https://divao.io/dashboard.html">Divao</a> and acquire the API key.</p>
+<p>Once you acquired the API key, you can use it when including the Divao library:</p>
+<pre class="prettyprint source lang-html"><code>&lt;script async data-api-key=&quot;YOUR_DIVAO_API_KEY&quot; src=&quot;https://api.divao.io/v1/&quot;>&lt;/script>
+</code></pre>
+<p>NOTE: Please be noticed that API key is bounded by the domain audience (attritribute <code>aud</code> specified on token signed by Divao), please ensure the token used on web app is operating on the domain registered that on Divao.</p>
+<h3>Obtain the public key of Divao</h3>
+<p>To verify the JWT, you can use the public key of Divao as below (<a href="https://tools.ietf.org/html/rfc7517">JSON Web Key</a> format):</p>
+<pre class="prettyprint source lang-json"><code>{
+    &quot;crv&quot;: &quot;Ed25519&quot;,
+    &quot;kid&quot;: &quot;c0ffb06ee03497bbb0103db9f53a3956&quot;,
+    &quot;kty&quot;: &quot;OKP&quot;,
+    &quot;use&quot;: &quot;sig&quot;,
+    &quot;x&quot;: &quot;FitlK9tHFHoY5NM_d2XQIya1XZkNvgY-sd6uNGmA4Rw&quot;
 }
 </code></pre></article>
     </section>
@@ -139,6 +162,15 @@ if(payload !== null)
 
 
 
+<script>
+    const pre = document.querySelector(".lang-mermaid");
+    const code = pre.querySelector("code");
+    const div = document.createElement("div");
+    div.className = "mermaid";
+    div.textContent = code.textContent;
+    pre.parentNode.replaceChild(div, pre);
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 <script src="scripts/prism.dev.js"></script>
 </body>
 </html>

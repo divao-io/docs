@@ -495,6 +495,15 @@ window object.</p>
 
 
 
+<script>
+    const pre = document.querySelector(".lang-mermaid");
+    const code = pre.querySelector("code");
+    const div = document.createElement("div");
+    div.className = "mermaid";
+    div.textContent = code.textContent;
+    pre.parentNode.replaceChild(div, pre);
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
 <script src="scripts/prism.dev.js"></script>
 </body>
 </html>
