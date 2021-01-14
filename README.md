@@ -20,8 +20,8 @@ sequenceDiagram
     Divao-->>-Client: Divao sends a message with a secret link
     Client->>+Divao: User clicks on the secret link
     Divao-->>-Client: Divao issues a standardized JWT
-    Client->>+Backend: Backend verifies the JWT to authenticate the user
-    Backend-->>-Client: Backend verify the JWT and response
+    Client->>+Backend: Backend verifies the JWT to authenticate request
+    Backend-->>-Client: Backend sends response
 ```
 
 ## Getting started
